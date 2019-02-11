@@ -61,9 +61,9 @@ public class AniController : MonoBehaviour
             DeadOn();
         }
     }
-    //key값"  swordmove , swordbackmove  , swordattack , swordstunned , sworddeath
-    //key값  Archermove , Archerbackmove , Archerattack , Archerstunned , Archerdeath
-    //key 값  Magicmove , Magicbackmove , Magicattack , Magicstunned ,  Magicdeath
+    //key값"  swordmove , swordbackmove  , swordattack  , sworddeath
+    //key값  Archermove , Archerbackmove , Archerattack  , Archerdeath
+    //key 값  Magicmove , Magicbackmove , Magicattack ,  Magicdeath
 
 
     public void Chrickidle() //애니메이션 종류선택
