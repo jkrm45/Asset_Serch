@@ -24,139 +24,142 @@ public class AniController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Chrickidle();
         RunOff();
         WalkOff();
         AttackOff();
         DrinkOff();
         Eatpoff();
-        Changeoff();
         PickUpoff();
-        if (Input.GetKey(KeyCode.UpArrow))
+        Changeoff();
+        if (Input.GetKey(KeyCode.Q))
         {
-           Player.Translate(0, 0, 4 * Time.deltaTime);
-            RunOn();
+            
+            Job = 1;
+            Chrickidle();
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.W))
         {
-            Player.Translate(0, 0, -4 * Time.deltaTime);
-            RunOn();
+            Job = 2;
+            Chrickidle();
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.E))
         {
-            Player.Translate(-4 * Time.deltaTime, 0,0);
-            WalkOn();
+            Job = 3;
+            Chrickidle();
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.R))
         {
-            Player.Translate(4 * Time.deltaTime, 0, 0);
-            WalkOn();
-        }
-        if (Input.GetKey(KeyCode.Space))
-        {
-            DeadOn();
+            Job = 4;
+            Chrickidle();
         }
         if (Input.GetKey(KeyCode.A))
         {
-            AttackOn();
+            ChangeOn();
         }
         if (Input.GetKey(KeyCode.Z))
         {
-            PickUpOn();
+            RunOn();
         }
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.S))
+        {
+            WalkOn();
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            AttackOn();
+        }
+        if (Input.GetKey(KeyCode.F))
         {
             DrinkOn();
         }
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(KeyCode.G))
         {
             EatOn();
         }
         if (Input.GetKey(KeyCode.F))
         {
-            ChangeOn();
+            PickUpOn();
         }
     }
-    //key값"  swordmove , swordbackmove  , swordattack  , sworddeath
-    //key값  Archermove , Archerbackmove , Archerattack  , Archerdeath
-    //key 값  Magicmove , Magicbackmove , Magicattack ,  Magicdeath
+    //key값"  Archer , Magician . Swardman , Food
+    //key값    Attack , Die , Run , Back
+    //key 값 
     //key 값 Drink , Eat , Pickup , Change
 
 
     public void Chrickidle() //애니메이션 종류선택
     {
-        if (Job == 1)
+        if (Job==1)
         {
-            AniControll.SetBool("SwardMan", true);
+          
+            AniControll.SetBool("Swardman", true);
             AniControll.SetBool("Archer", false);
-            AniControll.SetBool("Magic", false);
-
+            AniControll.SetBool("Magician", false);
+            AniControll.SetBool("Food", false);
+            AniControll.SetBool("Change", false);
+         
         }
-        if (Job == 2)
+        if (Job ==2)
         {
-            AniControll.SetBool("SwardMan", false);
+            AniControll.SetBool("Swardman", false);
             AniControll.SetBool("Archer", true);
-            AniControll.SetBool("Magic", false);
+            AniControll.SetBool("Magician", false);
+            AniControll.SetBool("Food", false);
+            AniControll.SetBool("Change", false);
         }
-        if (Job == 3)
+        if (Job ==3)
         {
-            AniControll.SetBool("SwardMan", false);
+            AniControll.SetBool("Swardman", false);
+            AniControll.SetBool("Food", false);
             AniControll.SetBool("Archer", false);
-            AniControll.SetBool("Magic", true);
+            AniControll.SetBool("Magician", true);
+            AniControll.SetBool("Change", false);
+        }
+        if (Job ==4)
+        {
+            AniControll.SetBool("Food", true);
+            AniControll.SetBool("Swardman", false);
+            AniControll.SetBool("Archer", false);
+            AniControll.SetBool("Magician", false);
+            AniControll.SetBool("Change", false);
         }
     }
 
     public void RunOn() // 달리기 불값 
     {
-        AniControll.SetBool("swordmove", true);
-        AniControll.SetBool("Archermove", true);
-        AniControll.SetBool("Magicmove", true);
+        AniControll.SetBool("Run", true);
     }
     public void RunOff()
     {
-        AniControll.SetBool("swordmove", false);
-        AniControll.SetBool("Archermove", false);
-        AniControll.SetBool("Magicmove", false);
+        AniControll.SetBool("Run", false);
     }
 
 
     public void WalkOn()//천천히 걷기
     {
-        AniControll.SetBool("swordbackmove", true);
-        AniControll.SetBool("Archerbackmove", true);
-        AniControll.SetBool("Magicbackmove", true);
+        AniControll.SetBool("Back", true);
     }
     public void WalkOff()
     {
-        AniControll.SetBool("swordbackmove", false);
-        AniControll.SetBool("Archerbackmove", false);
-        AniControll.SetBool("Magicbackmove", false);
+        AniControll.SetBool("Back", false);
     }
 
     public void AttackOn() //어택 함수호출
     {
-        AniControll.SetBool("swordattack", true);
-        AniControll.SetBool("Archerattack", true);
-        AniControll.SetBool("Magicattack", true);
+        AniControll.SetBool("Attack", true);
     }
     public void AttackOff()
     {
-        AniControll.SetBool("swordattack", false);
-        AniControll.SetBool("Archerattack", false);
-        AniControll.SetBool("Magicattack", false);
+        AniControll.SetBool("Attack", false);
     }
 
     public void DeadOn()  //죽는모션호출
     {
-        AniControll.SetBool("sworddeath", true);
-        AniControll.SetBool("Archerdeath", true);
-        AniControll.SetBool("Magicdeath", true);
+        AniControll.SetBool("Die", true);
     }
     public void DeadOff()
     {
-        AniControll.SetBool("sworddeath", false);
-        AniControll.SetBool("Archerdeath", false);
-        AniControll.SetBool("Magicdeath", false);
+        AniControll.SetBool("Die", false);
     }
 
 
@@ -186,6 +189,7 @@ public class AniController : MonoBehaviour
     {
         AniControll.SetBool("Eat", false);
     }
+
     public void ChangeOn()//바꾸는 모션
     {
         AniControll.SetBool("Change", true);
