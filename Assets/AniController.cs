@@ -28,6 +28,10 @@ public class AniController : MonoBehaviour
         RunOff();
         WalkOff();
         AttackOff();
+        DrinkOff();
+        Eatpoff();
+        Changeoff();
+        PickUpoff();
         if (Input.GetKey(KeyCode.UpArrow))
         {
            Player.Translate(0, 0, 4 * Time.deltaTime);
@@ -50,20 +54,33 @@ public class AniController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-           
+            DeadOn();
         }
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.A))
         {
             AttackOn();
         }
         if (Input.GetKey(KeyCode.Z))
         {
-            DeadOn();
+            PickUpOn();
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            DrinkOn();
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            EatOn();
+        }
+        if (Input.GetKey(KeyCode.F))
+        {
+            ChangeOn();
         }
     }
     //key값"  swordmove , swordbackmove  , swordattack  , sworddeath
     //key값  Archermove , Archerbackmove , Archerattack  , Archerdeath
     //key 값  Magicmove , Magicbackmove , Magicattack ,  Magicdeath
+    //key 값 Drink , Eat , Pickup , Change
 
 
     public void Chrickidle() //애니메이션 종류선택
@@ -143,6 +160,40 @@ public class AniController : MonoBehaviour
     }
 
 
+    public void DrinkOn()//마시는 모션
+    {
+        AniControll.SetBool("Drink", true);
+    }
+    public void DrinkOff()
+    {
+        AniControll.SetBool("Drink", false);
+    }
+
+    public void PickUpOn()//줍는모션
+    {
+        AniControll.SetBool("Pickup", true);
+    }
+    public void PickUpoff()
+    {
+        AniControll.SetBool("Pickup", false);
+    }
+
+    public void EatOn()//먹는 모션
+    {
+        AniControll.SetBool("Eat", true);
+    }
+    public void Eatpoff()
+    {
+        AniControll.SetBool("Eat", false);
+    }
+    public void ChangeOn()//바꾸는 모션
+    {
+        AniControll.SetBool("Change", true);
+    }
+    public void Changeoff()
+    {
+        AniControll.SetBool("Change", false);
+    }
 
 
 
